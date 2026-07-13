@@ -62,7 +62,7 @@ const listingSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
-});
+}, { timestamps: true })
 ```
 
 > 🧠 The `Schema` class can take an optional second parameter that is also an object. This is where we can turn on options for a document, such as `timestamps`. Also, notice that we have kept camel case for our field names to stay consistent with the naming convention of JavaScript.

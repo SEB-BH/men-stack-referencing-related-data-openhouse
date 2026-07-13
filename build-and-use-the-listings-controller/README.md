@@ -13,20 +13,33 @@ We are still on the user story:
 
 However, we need to do some more prep work before we can create a listing. We have our model now, so let's create our controller. The goal here is to create a router, import the listings model, and export the router so that we can mount it in our `server.js` file.
 
-Let's create a new file in our `controllers` directory called `listings.js`. Inside `listings.js` let's set up our router, require in our listing model, and export our router:
+Let's create a new file in our `controllers` directory called `listings.js`. Inside `listings.js` let's set up our functions, require our listing model, and export our functions:
 
 ```js
 // controllers/listings.js
 
-const express = require('express');
-const router = express.Router();
-
 const Listing = require('../models/listing');
 
-module.exports = router;
+const index = async (req, res) => {
+  res.send('All listings');
+};
+
+const showNewForm = async (req, res) => {
+  res.send('New listing form');
+};
+
+const create = async (req, res) => {
+  res.send('Create a listing');
+};
+
+module.exports = {
+  index,
+  showNewForm,
+  create,
+};
 ```
 
-Once our router is exported, we can import it into our `server.js` file and mount it:
+Once our controllers are exported, we can import them into our `server.js` file and use them:
 
 ```js
 // server.js
@@ -34,13 +47,16 @@ Once our router is exported, we can import it into our `server.js` file and moun
 // other require statements for libraries above
 const authController = require('./controllers/auth.js');
 // add listings controller:
-const listingsController = require('./controllers/listings');
+const listingsCtrl = require('./controllers/listings.js');
 
 // . . .
 
 app.use('/auth', authController);
-// mount listings controller
-app.use('/listings', listingsController);
+
+// listings routes
+app.get('/listings', listingsCtrl.index);
+app.get('/listings/new', listingsCtrl.showNewForm);
+app.post('/listings', listingsCtrl.create);
 ```
 
 Great, our controller file is set up. Time to add middleware!
