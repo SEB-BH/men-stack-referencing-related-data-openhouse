@@ -1,0 +1,151 @@
+import "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/static/v2/pkl/template.pkl" as Template
+
+// Add microlessons here, in the order they should be delivered
+
+setup = new Template.Microlesson {
+  friendlyName = "Setup"
+  dirName = "setup"
+  type = "Content"
+  videoUrl = ""
+}
+
+settingTheStage = new Template.Microlesson {
+  friendlyName = "Setting the Stage"
+  dirName = "setting-the-stage"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheListingModel = new Template.Microlesson {
+  friendlyName = "Build the Listing Model"
+  dirName = "build-the-listing-model"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildAndUseTheListingsController = new Template.Microlesson {
+  friendlyName = "Build and Use the Listings Controller"
+  dirName = "build-and-use-the-listings-controller"
+  type = "Content"
+  videoUrl = ""
+}
+
+addRouteMiddleware = new Template.Microlesson {
+  friendlyName = "Add Route Middleware"
+  dirName = "add-route-middleware"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheListingsLandingPage = new Template.Microlesson {
+  friendlyName = "Build the Listings Landing Page"
+  dirName = "build-the-listings-landing-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheNavigationBarPartial = new Template.Microlesson {
+  friendlyName = "Build the Navigation Bar Partial"
+  dirName = "build-the-navigation-bar-partial"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheNewPage = new Template.Microlesson {
+  friendlyName = "Build the New Page"
+  dirName = "build-the-new-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildCreateFunctionality = new Template.Microlesson {
+  friendlyName = "Build Create Functionality"
+  dirName = "build-create-functionality"
+  type = "Content"
+  videoUrl = ""
+}
+
+addIndexFunctionalityToTheListingsLandingPage = new Template.Microlesson {
+  friendlyName = "Add Index Functionality to the Listings Landing Page"
+  dirName = "add-index-functionality-to-the-listings-landing-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheShowPage = new Template.Microlesson {
+  friendlyName = "Build the Show Page"
+  dirName = "build-the-show-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildDeleteFunctionality = new Template.Microlesson {
+  friendlyName = "Build Delete Functionality"
+  dirName = "build-delete-functionality"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildTheEditPage = new Template.Microlesson {
+  friendlyName = "Build the Edit Page"
+  dirName = "build-the-edit-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+buildUpdateFunctionality = new Template.Microlesson {
+  friendlyName = "Build Update Functionality"
+  dirName = "build-update-functionality"
+  type = "Content"
+  videoUrl = ""
+}
+
+addFavoritesToTheListingSchema = new Template.Microlesson {
+  friendlyName = "Add Favorites to the Listing Schema"
+  dirName = "add-favorites-to-the-listing-schema"
+  type = "Content"
+  videoUrl = ""
+}
+
+addFavoritesFunctionalityToTheShowPage = new Template.Microlesson {
+  friendlyName = "Add Favorites Functionality to the Show Page"
+  dirName = "add-favorites-functionality-to-the-show-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+addUnfavoriteFunctionalityToTheShowPage = new Template.Microlesson {
+  friendlyName = "Add Unfavorite Functionality to the Show Page"
+  dirName = "add-unfavorite-functionality-to-the-show-page"
+  type = "Content"
+  videoUrl = ""
+}
+
+wrapUp = new Template.Microlesson {
+  friendlyName = "Wrap Up"
+  dirName = "wrap-up"
+  type = "Content"
+  videoUrl = ""
+}
+
+formattingCurrency = new Template.Microlesson {
+  friendlyName = "Formatting Currency"
+  dirName = "formatting-currency"
+  type = "Content"
+  videoUrl = ""
+}
+
+viewingAUsersFavoriteListings = new Template.Microlesson {
+  friendlyName = "Viewing a Users Favorite Listings"
+  dirName = "viewing-a-users-favorite-listings"
+  type = "Content"
+  videoUrl = ""
+}
+
+styleTheApplication = new Template.Microlesson {
+  friendlyName = "Style the Application"
+  dirName = "style-the-application"
+  type = "Content"
+  videoUrl = ""
+}
+

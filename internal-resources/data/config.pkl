@@ -1,0 +1,81 @@
+amends "https://pages.git.generalassemb.ly/modular-curriculum-all-courses/universal-resources-internal/static/v2/pkl/template.pkl"
+
+import "microlessons.pkl" as mls
+
+// See template.pkl for full configuration options available here.
+
+// After modifying this file, use this command while in the root directory
+// for this project to create the final configuration file (config.json):
+// pkl eval -f json ./internal-resources/data/config.pkl -o %{moduleDir}/%{moduleName}.%{outputFormat}
+
+repo {
+  // This name is shown in the header nav to navigate users home
+  friendlyName = "MEN Stack Referencing Related Data - Openhouse"
+  // This must match the repo name as it appears on GitHub exactly
+  name = "men-stack-referencing-related-data-openhouse"
+  type = "Lesson"
+}
+
+courses {
+  new {
+    name = "fallback"
+    microlessons {
+      // add microlessons here, in the order they should be delivered
+      mls.setup
+      mls.settingTheStage
+      mls.buildTheListingModel
+      mls.buildAndUseTheListingsController
+      mls.addRouteMiddleware
+      mls.buildTheListingsLandingPage
+      mls.buildTheNavigationBarPartial
+      mls.buildTheNewPage
+      mls.buildCreateFunctionality
+      mls.addIndexFunctionalityToTheListingsLandingPage
+      mls.buildTheShowPage
+      mls.buildDeleteFunctionality
+      mls.buildTheEditPage
+      mls.buildUpdateFunctionality
+      mls.addFavoritesToTheListingSchema
+      mls.addFavoritesFunctionalityToTheShowPage
+      mls.addUnfavoriteFunctionalityToTheShowPage
+      mls.wrapUp
+      mls.formattingCurrency
+      mls.viewingAUsersFavoriteListings
+      mls.styleTheApplication
+    }
+  }
+  new {
+    name = "fallback"
+    microlessons {
+      // add microlessons here, in the order they should be delivered
+      mls.setup
+      mls.settingTheStage
+      mls.buildTheListingModel
+      mls.buildAndUseTheListingsController
+      mls.addRouteMiddleware
+      mls.buildTheListingsLandingPage
+      mls.buildTheNavigationBarPartial
+      mls.buildTheNewPage
+      mls.buildCreateFunctionality
+      mls.addIndexFunctionalityToTheListingsLandingPage
+      mls.buildTheShowPage
+      mls.buildDeleteFunctionality
+      mls.buildTheEditPage
+      mls.buildUpdateFunctionality
+      mls.addFavoritesToTheListingSchema
+      mls.addFavoritesFunctionalityToTheShowPage
+      mls.addUnfavoriteFunctionalityToTheShowPage
+      mls.wrapUp
+      (mls.formattingCurrency) {
+        type = "Level Up content"
+      }
+      (mls.viewingAUsersFavoriteListings) {
+        type = "Level Up content"
+      }
+      (mls.styleTheApplication) {
+        type = "Level Up content"
+      }
+    }
+  }
+}
+
