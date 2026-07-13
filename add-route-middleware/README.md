@@ -64,14 +64,15 @@ Over in `server.js`, let's import our middleware function. Then, let's use the `
 // require in middleware
 const isSignedIn = require('./middleware/is-signed-in.js');
 
-const authController = require('./controllers/auth.js');
-const listingsController = require('./controllers/listings.js');
+const authCtrl = require('./controllers/auth.js');
+const listingsCtrl = require('./controllers/listings.js');
 
 // . . .
 
-app.use('/auth', authController);
+app.get('/listings', listingsCtrl.index)
 // add middleware to protect listings routes
-app.use('/listings', isSignedIn, listingsController);
+app.get('/listings/new', isSignedIn, listingsCtrl.showNewForm)
+app.post('/listings', isSignedIn, listingsCtrl.create)
 ```
 
 ## Authorization middleware - listing owner

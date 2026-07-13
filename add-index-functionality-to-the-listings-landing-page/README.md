@@ -11,6 +11,23 @@ Now that we have data in our database, let's focus on the next user story:
 
 > As a user, I want to view all the listings created by every user on a single page, to explore available properties.
 
+
+## 🎓 You Do: Log all listings
+
+We have determined that we need a route for `GET` requests to `/listings`. Let's build it! Inside of `controllers/listings.js` do the following steps:
+
+1. Using the `Listing` model, find all listings.
+2. `console.log()` the listings.
+3. `res.send()` a message that says "Listings index page".
+4. `console.log()` any errors that occur.
+5. Test your route in the browser by going to `localhost:3000/listings` manually.
+
+> 🚨 Make sure you have started your server with `nodemon` before testing your route.
+
+After completing the above steps, you should see the message "Listings index page" in the browser. 
+
+Make sure you have debugged your application before moving on!
+
 At the moment, we have a route and controller defined, but we are not yet rendering the data to the view. When we display our listings, we'll want to include the `city` that each listing is in, as well as the `username` of the listing's `owner`. To accomplish this, we'll need to make use of the Mongoose `populate()` method.
 
 ## The `populate()` method

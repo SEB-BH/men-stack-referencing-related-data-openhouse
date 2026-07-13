@@ -70,16 +70,6 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build the Listings Landing Page",
-          "dirName": "build-the-listings-landing-page",
-          "type": "Content",
-          "skill": "",
-          "learningObjective": "",
-          "videoUrl": "",
-          "videoLengthInMinutes": 0,
-          "estimatedDeliveryTimeInMinutes": 0
-        },
-        {
           "friendlyName": "Build the Navigation Bar Partial",
           "dirName": "build-the-navigation-bar-partial",
           "type": "Content",
@@ -102,6 +92,16 @@
         {
           "friendlyName": "Build Create Functionality",
           "dirName": "build-create-functionality",
+          "type": "Content",
+          "skill": "",
+          "learningObjective": "",
+          "videoUrl": "",
+          "videoLengthInMinutes": 0,
+          "estimatedDeliveryTimeInMinutes": 0
+        },
+        {
+          "friendlyName": "Build the Listings Landing Page",
+          "dirName": "build-the-listings-landing-page",
           "type": "Content",
           "skill": "",
           "learningObjective": "",
@@ -309,16 +309,6 @@
           "estimatedDeliveryTimeInMinutes": 0
         },
         {
-          "friendlyName": "Build the Listings Landing Page",
-          "dirName": "build-the-listings-landing-page",
-          "type": "Content",
-          "skill": "",
-          "learningObjective": "",
-          "videoUrl": "",
-          "videoLengthInMinutes": 0,
-          "estimatedDeliveryTimeInMinutes": 0
-        },
-        {
           "friendlyName": "Build the Navigation Bar Partial",
           "dirName": "build-the-navigation-bar-partial",
           "type": "Content",
@@ -341,6 +331,16 @@
         {
           "friendlyName": "Build Create Functionality",
           "dirName": "build-create-functionality",
+          "type": "Content",
+          "skill": "",
+          "learningObjective": "",
+          "videoUrl": "",
+          "videoLengthInMinutes": 0,
+          "estimatedDeliveryTimeInMinutes": 0
+        },
+        {
+          "friendlyName": "Build the Listings Landing Page",
+          "dirName": "build-the-listings-landing-page",
           "type": "Content",
           "skill": "",
           "learningObjective": "",

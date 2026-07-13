@@ -45,13 +45,10 @@ Once our controllers are exported, we can import them into our `server.js` file 
 // server.js
 
 // other require statements for libraries above
-const authController = require('./controllers/auth.js');
+const authCtrl = require('./controllers/auth.js');
 // add listings controller:
 const listingsCtrl = require('./controllers/listings.js');
 
-// . . .
-
-app.use('/auth', authController);
 
 // listings routes
 app.get('/listings', listingsCtrl.index);

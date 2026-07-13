@@ -17,23 +17,6 @@ We can determine that we need a `GET` request to `/listings`. This will be our i
 
 > 💡 The index action is one of two read actions in CRUD. It is used to display all of the resources of a given type.
 
-## 🎓 You Do: Log all listings
-
-We have determined that we need a route for `GET` requests to `/listings`. Let's build it! Inside of `controllers/listings.js` do the following steps:
-
-1. Create a route for `GET` requests to `/listings`.
-2. Using the `Listing` model, find all listings.
-3. `console.log()` the listings.
-4. `res.send()` a message that says "Listings index page".
-5. `console.log()` any errors that occur.
-6. Test your route in the browser by going to `localhost:3000/listings` manually.
-
-> 🚨 Make sure you have started your server with `nodemon` before testing your route.
-
-After completing the above steps, you should see the message "Listings index page" in the browser. You should also see an empty array in the terminal. This is because we have yet to create any listings.
-
-Make sure you have debugged your application before moving on!
-
 ## Rendering the listings index page
 
 We have confirmed that our route is working; now it's time to render the listings index page. For right now, we are not going to worry about displaying any data, we just want to set up a view that we can add to in the future. Let's create a new directory called `listings` in our `views` directory. Inside of `views/listings`, create a new file called `index.ejs`. Inside of `index.ejs`, let's add the following code:

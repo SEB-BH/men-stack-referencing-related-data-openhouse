@@ -18,10 +18,10 @@ This module is all about building a robust MEN (MongoDB, Express.js, Node.js) st
 | [Build the Listing Model](./build-the-listing-model/README.md)                                                           | Creating a model for the listing resource.                                |
 | [Build and Use the Listings Controller](./build-and-use-the-listings-controller/README.md)                               | Require and mount a controller file.                                      |
 | [Add Route Middleware](./add-route-middleware/README.md)                                                                 | Create middleware to check authentication and pass user data to the view. |
-| [Build the Listings Landing Page](./build-the-listings-landing-page/README.md)                                           | Construct a landing page for a resource.                                  |
 | [Build the Navigation Bar Partial](./build-the-navigation-bar-partial/README.md)                                         | Create NavBar partials.                                                   |
 | [Build the New Page](./build-the-new-page/README.md)                                                                     | Construct a New page view with a form for user input.                     |
 | [Build Create Functionality](./build-create-functionality/README.md)                                                     | Implementing create functionality.                                        |
+| [Build the Listings Landing Page](./build-the-listings-landing-page/README.md)                                           | Construct a landing page for a resource.                                  |
 | [Add Index Functionality to the Listings Landing Page](./add-index-functionality-to-the-listings-landing-page/README.md) | Applying the `populate()` method to index functionality.                  |
 | [Build the Show Page](./build-the-show-page/README.md)                                                                   | Displaying a single resource on its own page.                             |
 | [Build Delete Functionality](./build-delete-functionality/README.md)                                                     | Securely deleting a resource with protected controller actions.           |
