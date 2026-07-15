@@ -185,13 +185,9 @@ Next, create a function that adds a question to a listing:
 
 const Listing = require('../models/listing.js')
 
-async function create(req, res) {
-  try {
-    const listing = await Listing.findById(req.params.listingId)
+const create =  async (req, res) => {
 
-    if (!listing) {
-      return res.redirect('/listings')
-    }
+    const listing = await Listing.findById(req.params.listingId)
 
     const questionData = {
       text: req.body.text,
@@ -203,10 +199,6 @@ async function create(req, res) {
     await listing.save()
 
     res.redirect(`/listings/${listing._id}`)
-  } catch (error) {
-    console.log(error)
-    res.redirect(`/listings/${req.params.listingId}`)
-  }
 }
 
 module.exports = {
@@ -266,16 +258,10 @@ Add the route:
 ```js
 // server.js
 
-app.post(
-  '/listings/:listingId/questions',
-  isSignedIn,
-  questionsCtrl.create
-)
+app.post('/listings/:listingId/questions', questionsCtrl.create)
 ```
 
 The route passes the request to the `create` function inside `controllers/questions.js`.
-
-The `isSignedIn` middleware prevents logged-out users from creating questions.
 
 ## Add the question form
 
@@ -287,22 +273,12 @@ Add the following section beneath the listing's details:
 <!-- views/listings/show.ejs -->
 
 <section>
-  <h2>Questions about this property</h2>
+  <h2>Questions about this property?</h2>
 
-  <form
-    action="/listings/<%= listing._id %>/questions"
-    method="POST"
-  >
-    <label for="question-text">
-      Ask a question:
-    </label>
+  <form action="/listings/<%= listing._id %>/questions" method="POST">
 
-    <textarea
-      id="question-text"
-      name="text"
-      rows="4"
-      required
-    ></textarea>
+    Ask a question:
+    <textarea name="text" rows="4"required></textarea>
 
     <button type="submit">Ask Question</button>
   </form>
@@ -340,17 +316,10 @@ Update the Mongoose query so that it populates both the listing owner and the qu
 ```js
 // controllers/listings.js
 
-async function show(req, res) {
-  try {
-    const listing = await Listing.findById(
-      req.params.listingId
-    )
+const show = async (req, res) => {
+    const listing = await Listing.findById(req.params.listingId)
       .populate('owner')
       .populate('questions.author')
-
-    if (!listing) {
-      return res.redirect('/listings')
-    }
 
     const userHasFavorited = listing.favoritedByUsers.some(
       function (userId) {
@@ -362,10 +331,6 @@ async function show(req, res) {
       listing: listing,
       userHasFavorited: userHasFavorited,
     })
-  } catch (error) {
-    console.log(error)
-    res.redirect('/listings')
-  }
 }
 ```
 
@@ -397,7 +362,7 @@ Under the question form, check whether the listing has any questions:
 <% if (listing.questions.length === 0) { %>
   <p>No questions have been asked yet.</p>
 <% } else { %>
-  <% listing.questions.forEach(function (question) { %>
+  <% listing.questions.forEach((question) => { %>
     <article>
       <p><%= question.text %></p>
 
@@ -440,7 +405,7 @@ The complete questions section should now look similar to this:
   <% if (listing.questions.length === 0) { %>
     <p>No questions have been asked yet.</p>
   <% } else { %>
-    <% listing.questions.forEach(function (question) { %>
+    <% listing.questions.forEach((question) => { %>
       <article>
         <p><%= question.text %></p>
 
@@ -458,7 +423,7 @@ The complete questions section should now look similar to this:
 Start the application:
 
 ```bash
-npm run dev
+nodemon server.js
 ```
 
 Then complete the following steps:
@@ -512,17 +477,3 @@ question.author
 
 This is an example of using **embedding and referencing together**.
 
-## 🎓 You Do
-
-Add questions to at least two different listings.
-
-For each question, confirm that:
-
-* The question appears only on the correct listing.
-* The question contains its own `_id`.
-* The question's author is stored as an `ObjectId`.
-* The author's username appears after the `author` path is populated.
-
-Then answer this question:
-
-> Why does it make sense to embed a question inside a listing instead of creating a separate questions collection?
