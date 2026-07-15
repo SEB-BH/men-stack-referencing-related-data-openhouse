@@ -62,16 +62,19 @@ Add the following to `controllers/listings.js`:
 ```js
 // controllers/listings.js
 
-router.delete('/:listingId', async (req, res) => {
-  try {
-    console.log('listingId: ', req.params.listingId);
-    console.log('user: ', req.session.user);
-    res.send(`A DELETE request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const deleteListing = async (req, res) => {
+    console.log('listingId: ', req.params.listingId)
+    console.log('user: ', req.session.user)
+    res.send(`A DELETE request was issued for ${req.params.listingId}`)
+}
+```
+
+## Adding the route
+
+```js
+// server.js
+
+app.delete('/listings/:listingId', listingsCtrl.deleteListing )
 ```
 
 In your browser, click on the delete button and check your terminal for the logged data.
@@ -93,15 +96,11 @@ First, let's retrieve the listing using the `findById()` method:
 ```javascript
 // controllers/listings.js
 
-router.delete('/:listingId', async (req, res) => {
-  try {
-    const listing = await Listing.findById(req.params.listingId);
-    res.send(`A DELETE request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const deleteListing = async (req, res) => {
+    const listing = await Listing.findById(req.params.listingId)
+    res.send(`A DELETE request was issued for ${req.params.listingId}`)
+
+}
 ```
 
 ### Implementing a permission check
@@ -113,22 +112,17 @@ Update the function with the following `if...else`:
 ```javascript
 // controllers/listings.js
 
-router.delete('/:listingId', async (req, res) => {
-  try {
-    const listing = await Listing.findById(req.params.listingId);
+const deleteListing =  async (req, res) => {
+    const listing = await Listing.findById(req.params.listingId)
 
     if (listing.owner.equals(req.session.user._id)) {
-      console.log('Permission granted');
+      console.log('Permission granted')
     } else {
-      console.log('Permission denied');
+      console.log('Permission denied')
     }
 
-    res.send(`A DELETE request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    res.send(`A DELETE request was issued for ${req.params.listingId}`)
+}
 ```
 
 ### Deleting the listing
@@ -138,8 +132,8 @@ Let's take a moment to explore the [`deleteOne()`](https://mongoosejs.com/docs/5
 When called on a document instance, `deleteOne()` removes that document from the database:
 
 ```javascript
-const docInstance = await Model.findById(req.params.modelId);
-docInstance.deleteOne();
+const docInstance = await Model.findById(req.params.modelId)
+docInstance.deleteOne()
 ```
 
 > 🧠 The `deleteOne()` method can also be called on the model. In this context, it requires an object specifying the criteria to identify the document for deletion. The first document that matches these conditions is removed from the database. We're not using this approach because we need to verify user permission before deletion.
@@ -149,20 +143,15 @@ Update the function as shown below:
 ```javascript
 // controllers/listings.js
 
-router.delete('/:listingId', async (req, res) => {
-  try {
-    const listing = await Listing.findById(req.params.listingId);
+const deleteListing =  async (req, res) => {
+    const listing = await Listing.findById(req.params.listingId)
     if (listing.owner.equals(req.session.user._id)) {
-      await listing.deleteOne();
-      res.redirect('/listings');
+      await listing.deleteOne()
+      res.redirect('/listings')
     } else {
-      res.send("You don't have permission to do that.");
+      res.send("You don't have permission to do that.")
     }
-  } catch (error) {
-    console.error(error);
-    res.redirect('/');
-  }
-});
+}
 ```
 
 Open up your browser and try deleting a listing that you own. If you attempt to delete a listing that you are not the owner of, you should notice that you are prevented from doing so on both the client and the server.

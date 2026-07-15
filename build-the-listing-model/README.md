@@ -22,9 +22,9 @@ Before creating a listing, we need to create a Schema and Model for our listing.
 ```js
 // models/listing.js
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const listingSchema = new mongoose.Schema({});
+const listingSchema = new mongoose.Schema({})
 ```
 
 > 🏆 You should always use the [`new`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new) keyword when creating a new instance of a Schema. This is because we do not want to modify the Schema class itself; instead, we want to create a new instance of it. This is a common pattern in object-oriented programming.
@@ -41,7 +41,7 @@ Translating this into JavaScript using the Mongoose library, we get the followin
 ```js
 // models/listing.js
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const listingSchema = new mongoose.Schema({
   streetAddress: {
@@ -116,9 +116,9 @@ So far, we have only created a schema for our listing - a blueprint for what our
 // models/listing.js
 
 // ... listingSchema located above
-const Listing = mongoose.model('Listing', listingSchema);
+const Listing = mongoose.model('Listing', listingSchema)
 
-module.exports = Listing;
+module.exports = Listing
 ```
 
 That's it! We now have a model that we can use to create, read, update, and delete listings.

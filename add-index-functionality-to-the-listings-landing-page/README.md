@@ -70,14 +70,9 @@ Update your controller function as shown below:
 // controllers/listings.js
 
 const index = async (req, res) => {
-  try {
     const populatedListings = await Listing.find({}).populate('owner')
     console.log('Populated Listings:', populatedListings)
     res.render('listings/index.ejs')
-  } catch (error) {
-    console.log(error)
-    res.redirect('/')
-  }
 }
 ```
 
@@ -116,17 +111,12 @@ First, update the controller so that `populatedListings` is passed to the view a
 // controllers/listings.js
 
 const index = async (req, res) => {
-  try {
     const populatedListings = await Listing.find({}).populate('owner')
 
     // Add the following:
     res.render('listings/index.ejs', {
       listings: populatedListings,
     })
-  } catch (error) {
-    console.log(error)
-    res.redirect('/')
-  }
 }
 ```
 

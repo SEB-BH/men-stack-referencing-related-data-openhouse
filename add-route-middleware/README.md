@@ -22,7 +22,7 @@ First, we need a function that will accept the `req`, `res`, and `next` paramete
 ```js
 // middleware/is-signed-in.js
 
-const isSignedIn = (req, res, next) => {};
+const isSignedIn = (req, res, next) => {}
 ```
 
 Next, we need to handle if a user is signed in or not. If we look back over in `server.js`, we can see that we have saved the currently signed-in user to the `req.session` object. This is wonderful, because now we can use an `if` condition to check if the user is signed in. If they are, we will call `next()` to move on to the following middleware function:
@@ -31,17 +31,17 @@ Next, we need to handle if a user is signed in or not. If we look back over in `
 // middleware/is-signed-in.js
 
 const isSignedIn = (req, res, next) => {
-  if (req.session.user) return next();
-};
+  if (req.session.user) return next()
+}
 ```
 
 Now, we just have to handle the case of a user needing to be signed in, in which case we want to redirect them to the sign-in page. We can do this with the `res.redirect()` method. We will pass in the path to the sign-in page as an argument to `res.redirect()`:
 
 ```js
 const isSignedIn = (req, res, next) => {
-  if (req.session.user) return next();
-  res.redirect('/auth/sign-in');
-};
+  if (req.session.user) return next()
+  res.redirect('/auth/sign-in')
+}
 ```
 
 If there is a `req.session.user`, the function returns and invokes the next function in the middleware pipeline. Otherwise, `res.redirect()` is invoked, sending the user to the sign in page.
@@ -62,10 +62,10 @@ Over in `server.js`, let's import our middleware function. Then, let's use the `
 // other require statements for libraries above
 
 // require in middleware
-const isSignedIn = require('./middleware/is-signed-in.js');
+const isSignedIn = require('./middleware/is-signed-in.js')
 
-const authCtrl = require('./controllers/auth.js');
-const listingsCtrl = require('./controllers/listings.js');
+const authCtrl = require('./controllers/auth.js')
+const listingsCtrl = require('./controllers/listings.js')
 
 // . . .
 
@@ -84,15 +84,15 @@ To do this, we need to create a new middleware function that will assign the sig
 ```js
 // middleware/pass-user-to-view.js
 
-const passUserToView = (req, res, next) => {};
+const passUserToView = (req, res, next) => {}
 ```
 
 We know we want to assign the current signed-in user to the `res.locals` object, but what if there is no signed-in user? We'll need to handle this case as well. Since we want to preform an action based on a boolean condition, we can use a ternary expression to accomplish our task. We will assign the current signed-in user to the `res.locals` object if there is a signed-in user, else we will assign `null` to the `res.locals` object:
 
 ```js
 const passUserToView = (req, res, next) => {
-  res.locals.user = req.session.user ? req.session.user : null;
-  next();
+  res.locals.user = req.session.user ? req.session.user : null
+  next()
 };
 
 module.exports = passUserToView;
@@ -106,9 +106,9 @@ Success! We now have a middleware function that will assign the current signed-i
 // server.js
 
 // other require statements for libraries above
-const isSignedIn = require('./middleware/is-signed-in.js');
+const isSignedIn = require('./middleware/is-signed-in.js')
 // require in middleware
-const passUserToView = require('./middleware/pass-user-to-view.js');
+const passUserToView = require('./middleware/pass-user-to-view.js')
 
 // Router/Controller requires statements and database connection
 
@@ -126,8 +126,8 @@ app.use(passUserToView);
 app.get('/', (req, res) => {
   res.render('index.ejs', {
     user: req.session.user,
-  });
-});
+  })
+})
 ```
 
 > 💡 Using the `next()` method in Express is a way to move to the following action in our Express application. After we have assigned the current signed-in user to the `res.locals` object, we want to move on to the next action in our Express application. In this case, that is the `app.get()` method call for the root route.

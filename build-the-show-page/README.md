@@ -50,15 +50,18 @@ Add the following to `controllers/listings.js`:
 ```js
 // controllers/listings.js
 
-router.get('/:listingId', async (req, res) => {
-  try {
+const show = async (req, res) => {
     console.log('listingId: ', req.params.listingId);
-    res.send(`Listings show page`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    res.send(`Listings show page`)
+}
+```
+
+## Adding the route
+
+```js
+// server.js
+
+app.get('/listings/:listingId', listingsCtrl.show )
 ```
 
 After completing the steps above, click on the 'View more details' link on the listings landing page. In your browser, you should see the 'Listings show page' message. In your terminal, you should see the `ObjectId` for the listing that you clicked on.
@@ -72,20 +75,15 @@ Update the function as shown below:
 ```js
 // controllers/listings.js
 
-router.get('/:listingId', async (req, res) => {
-  try {
+const show = async (req, res) => {
     const populatedListings = await Listing.findById(
       req.params.listingId
-    ).populate('owner');
+    ).populate('owner')
 
     res.render('listings/show.ejs', {
       listing: populatedListings,
-    });
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    })
+}
 ```
 
 > 💡 In our application, we'll need to `populate()` the `owner` path anytime we wish to display information about an `owner` beyond an `ObjectId.`
