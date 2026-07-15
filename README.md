@@ -23,10 +23,10 @@ This module is all about building a robust MEN (MongoDB, Express.js, Node.js) st
 | [Build Create Functionality](./build-create-functionality/README.md)                                                     | Implementing create functionality.                                        |
 | [Build the Listings Landing Page](./build-the-listings-landing-page/README.md)                                           | Construct a landing page for a resource.                                  |
 | [Add Index Functionality to the Listings Landing Page](./add-index-functionality-to-the-listings-landing-page/README.md) | Applying the `populate()` method to index functionality.                  |
-| [Style the Application](./style-the-application/README.md)                                                               | Adding CSS to style the application                                       |
-<!-- | [Build the Show Page](./build-the-show-page/README.md)                                                                   | Displaying a single resource on its own page.                             |
+| [Build the Show Page](./build-the-show-page/README.md)                                                                   | Displaying a single resource on its own page.                             |
 | [Build Delete Functionality](./build-delete-functionality/README.md)                                                     | Securely deleting a resource with protected controller actions.           |
-| [Build the Edit Page](./build-the-edit-page/README.md)                                                                   | Building an edit view.                                                    |
+| [Style the Application](./style-the-application/README.md)                                                               | Adding CSS to style the application                                       |
+<!-- | [Build the Edit Page](./build-the-edit-page/README.md)                                                                   | Building an edit view.                                                    |
 | [Build Update Functionality](./build-update-functionality/README.md)                                                     | Securely updating a resource with protected controller actions.           |
 | [Add Favorites to the Listing Schema](./add-favorites-to-the-listing-schema/README.md)                                   | Implementing many-to-many relationships in MongoDB.                       |
 | [Add Favorites Functionality to the Show Page](./add-favorites-functionality-to-the-show-page/README.md)                 | Implementing the functionality to favorite a resource.                    |
