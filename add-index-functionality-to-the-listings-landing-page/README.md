@@ -14,7 +14,7 @@ Now that we have data in our database, let's focus on the next user story:
 
 ## 🎓 You Do: Log all listings
 
-We have determined that we need a route for `GET` requests to `/listings`. Let's build it! Inside of `controllers/listings.js` do the following steps:
+We have determined that we need a route for `GET` requests to `/listings`. Let's build it! Inside of `controllers/listings.js` do the following steps in your `index` function:
 
 1. Using the `Listing` model, find all listings.
 2. `console.log()` the listings.
@@ -69,16 +69,16 @@ Update your controller function as shown below:
 ```javascript
 // controllers/listings.js
 
-router.get('/', async (req, res) => {
+const index = async (req, res) => {
   try {
-    const populatedListings = await Listing.find({}).populate('owner');
-    console.log('Populated Listings:', populatedListings);
-    res.render('listings/index.ejs');
+    const populatedListings = await Listing.find({}).populate('owner')
+    console.log('Populated Listings:', populatedListings)
+    res.render('listings/index.ejs')
   } catch (error) {
-    console.log(error);
-    res.redirect('/');
+    console.log(error)
+    res.redirect('/')
   }
-});
+}
 ```
 
 In your browser, navigate to the listings landing page and check your terminal.
@@ -115,19 +115,19 @@ First, update the controller so that `populatedListings` is passed to the view a
 ```javascript
 // controllers/listings.js
 
-router.get('/', async (req, res) => {
+const index = async (req, res) => {
   try {
-    const populatedListings = await Listing.find({}).populate('owner');
+    const populatedListings = await Listing.find({}).populate('owner')
 
     // Add the following:
     res.render('listings/index.ejs', {
       listings: populatedListings,
-    });
+    })
   } catch (error) {
-    console.log(error);
-    res.redirect('/');
+    console.log(error)
+    res.redirect('/')
   }
-});
+}
 ```
 
 And finally, add the following to the `<body>` of `views/listings/index.ejs`:
