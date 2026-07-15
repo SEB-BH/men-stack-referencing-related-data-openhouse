@@ -114,16 +114,16 @@ Next, after our header, we'll want to add the following `<form>`:
 <!-- views/listings/edit.ejs -->
 
 <form>
-  <label for="streetAddress">Street address:</label>
+  Street address:
   <input
     type="text"
     name="streetAddress"
     id="street"
     value="<%= listing.streetAddress %>"
   />
-  <label for="city">City:</label>
+  City:
   <input type="text" name="city" id="city" value="<%= listing.city %>" />
-  <label for="price">Price:</label>
+  Price:
   <input
     type="number"
     name="price"
@@ -131,7 +131,7 @@ Next, after our header, we'll want to add the following `<form>`:
     value="<%= listing.price %>"
     min="0"
   />
-  <label for="size">Size:</label>
+  Size:
   <input
     type="number"
     name="size"

@@ -46,16 +46,19 @@ Update `controllers/listings.js` with the code below:
 ```js
 // controllers/listings.js
 
-router.put('/:listingId', async (req, res) => {
-  try {
-    console.log('listingId:', req.params.listingId);
-    console.log('user:', req.session.user);
-    res.send(`A PUT request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const update = async (req, res) => {
+    console.log('listingId:', req.params.listingId)
+    console.log('user:', req.session.user)
+    res.send(`A PUT request was issued for ${req.params.listingId}`)
+}
+```
+
+## Adding the route
+
+```js
+// server.js
+
+app.put('/listings/:listingId', listingsCtrl.update )
 ```
 
 Test that everything is working as expected by submitting the edit form.
@@ -79,15 +82,10 @@ First, let's remove the console logs and retrieve the listing using the `findByI
 ```js
 // controllers/listings.js
 
-router.put('/:listingId', async (req, res) => {
-  try {
-    const currentListing = await Listing.findById(req.params.listingId);
-    res.send(`A PUT request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const update =  async (req, res) => {
+    const currentListing = await Listing.findById(req.params.listingId)
+    res.send(`A PUT request was issued for ${req.params.listingId}`)
+}
 ```
 
 ### Implementing a permission check
@@ -99,8 +97,7 @@ Update the function with the following `if...else` block:
 ```js
 // controllers/listings.js
 
-router.put('/:listingId', async (req, res) => {
-  try {
+const update = async (req, res) => {
     const currentListing = await Listing.findById(req.params.listingId);
 
     if (currentListing.owner.equals(req.session.user._id)) {
@@ -110,45 +107,25 @@ router.put('/:listingId', async (req, res) => {
     }
 
     res.send(`A PUT request was issued for ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+}
 ```
 
 ### Updating the listing
-
-Let's take a moment to explore the [`updateOne()`](<https://mongoosejs.com/docs/api/model.html#Model.updateOne()>) method.
-
-When `updateOne()` is called on a document instance, it updates the document with the provided data, like so:
-
-```js
-const docInstance = await Model.findById(req.params.modelId);
-docInstance.updateOne({ name: 'Alex' });
-```
-
-> 🧠 The `updateOne()` method can also be called on the model. In this context, it requires an object specifying the criteria to identify the document for update. We're not using this approach because we need to verify user permission before deletion.
 
 Update the function as shown below:
 
 ```js
 // controllers/listings.js
 
-router.put('/:listingId', async (req, res) => {
-  try {
-    const currentListing = await Listing.findById(req.params.listingId);
+const update = async (req, res) => {
+    const currentListing = await Listing.findById(req.params.listingId)
     if (currentListing.owner.equals(req.session.user._id)) {
-      await currentListing.updateOne(req.body);
-      res.redirect('/listings');
+      await currentListing.findByIdAndUpdate(req.body)
+      res.redirect(`/listings/${req.params.listingId}`)
     } else {
-      res.send("You don't have permission to do that.");
+      res.send("You don't have permission to do that.")
     }
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+}
 ```
 
 Test it out by updating a listing!
