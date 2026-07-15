@@ -36,7 +36,7 @@ We have determined that we need a route for `POST` requests to `/listings`. Let'
 
 1. Create a route for `POST` requests to `/listings`.
 2. `console.log()` the data being sent from the form.
-3. Using `res.redirect()` redirect to `/listings`.
+3. Use `res.redirect()` redirect to `/listings`.
 
 Test by submitting the form in the browser.
 
@@ -51,11 +51,11 @@ We have the form data! However, we still need one last piece of the puzzle. If w
 Recall that we can access the currently signed-in user on the `req.session` object. We can use this to set the owner of the listing in our controller function. Let's update our route to create a new listing in the database:
 
 ```js
-router.post('/', async (req, res) => {
-  req.body.owner = req.session.user._id;
-  await Listing.create(req.body);
-  res.redirect('/listings');
-});
+const create = async (req, res) => {
+  req.body.owner = req.session.user._id
+  await Listing.create(req.body)
+  res.redirect('/listings')
+}
 ```
 
 > 💡 If we were to `console.log` the `req.body` object after we add the `owner` key, we would see an object that directly matches our schema. Since this is the case, we can pass the `req.body` object directly into the `Listing.create()` method.
