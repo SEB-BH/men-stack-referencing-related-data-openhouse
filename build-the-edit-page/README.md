@@ -47,15 +47,17 @@ Next, let's build the scaffolding for our controller:
 ```js
 // controllers/listings.js
 
-router.get('/:listingId/edit', async (req, res) => {
-  try {
-    console.log('listingId: ', req.params.listingId);
-    res.send(`Listings edit view`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const edit = async (req, res) => {
+    console.log('listingId: ', req.params.listingId)
+    res.send(`Listings edit view`)
+}
+```
+## Adding the route
+
+```js
+// server.js
+
+app.get('/listings/:listingId/edit', listingsCtrl.edit )
 ```
 
 In your browser, navigate to the edit page and check your terminal for the logged data.
@@ -67,17 +69,12 @@ With access to the `listingId` we can build out the rest of the function, passin
 ```js
 // controllers/listings.js
 
-router.get('/:listingId/edit', async (req, res) => {
-  try {
-    const currentListing = await Listing.findById(req.params.listingId);
+const edit = async (req, res) => {
+    const currentListing = await Listing.findById(req.params.listingId)
     res.render('listings/edit.ejs', {
       listing: currentListing,
-    });
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    })
+}
 ```
 
 ## Rendering the view

@@ -25,15 +25,16 @@ This module is all about building a robust MEN (MongoDB, Express.js, Node.js) st
 | [Add Index Functionality to the Listings Landing Page](./add-index-functionality-to-the-listings-landing-page/README.md) | Applying the `populate()` method to index functionality.                  |
 | [Build the Show Page](./build-the-show-page/README.md)                                                                   | Displaying a single resource on its own page.                             |
 | [Build Delete Functionality](./build-delete-functionality/README.md)                                                     | Securely deleting a resource with protected controller actions.           |
-| [Style the Application](./style-the-application/README.md)                                                               | Adding CSS to style the application                                       |
 | [Build the Edit Page](./build-the-edit-page/README.md)                                                                   | Building an edit view.                                                    |
 | [Build Update Functionality](./build-update-functionality/README.md)                                                     | Securely updating a resource with protected controller actions.           |
 | [Add Favorites to the Listing Schema](./add-favorites-to-the-listing-schema/README.md)                                   | Implementing many-to-many relationships in MongoDB.                       |
 | [Add Favorites Functionality to the Show Page](./add-favorites-functionality-to-the-show-page/README.md)                 | Implementing the functionality to favorite a resource.                    |
 | [Add Unfavorite Functionality to the Show Page](./add-unfavorite-functionality-to-the-show-page/README.md)               | Implementing the functionality to unfavorite a resource.                  |
 | [Wrap Up](./wrap-up/README.md)                                                                                           | Review of key concepts                                                    |
+| [Embed Questions in Listings](./embed-questions-in-listings/README.md)                                                   | Embedding questions inside listings and referencing their authors.        |
 | [Formatting Currency](./formatting-currency/README.md)                                                                   | Formatting currency in JavaScript.                                        |
 | [Viewing a User's Favorite Listings](./viewing-a-users-favorite-listings.md/README.md)                                   | Displaying related user data.                                             |
+| [Style the Application](./style-the-application/README.md)                                                               | Adding CSS to style the application                                       |
 
 ## References
 
