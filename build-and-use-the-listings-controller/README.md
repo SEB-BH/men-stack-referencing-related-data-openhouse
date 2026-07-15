@@ -18,19 +18,19 @@ Let's create a new file in our `controllers` directory called `listings.js`. Ins
 ```js
 // controllers/listings.js
 
-const Listing = require('../models/listing');
+const Listing = require('../models/listing')
 
 const index = async (req, res) => {
-  res.send('All listings');
-};
+  res.send('All listings')
+}
 
 const showNewForm = async (req, res) => {
-  res.send('New listing form');
-};
+  res.send('New listing form')
+}
 
 const create = async (req, res) => {
-  res.send('Create a listing');
-};
+  res.send('Create a listing')
+}
 
 module.exports = {
   index,
@@ -45,15 +45,15 @@ Once our controllers are exported, we can import them into our `server.js` file 
 // server.js
 
 // other require statements for libraries above
-const authCtrl = require('./controllers/auth.js');
+const authCtrl = require('./controllers/auth.js')
 // add listings controller:
-const listingsCtrl = require('./controllers/listings.js');
+const listingsCtrl = require('./controllers/listings.js')
 
 
 // listings routes
-app.get('/listings', listingsCtrl.index);
-app.get('/listings/new', listingsCtrl.showNewForm);
-app.post('/listings', listingsCtrl.create);
+app.get('/listings', listingsCtrl.index)
+app.get('/listings/new', listingsCtrl.showNewForm)
+app.post('/listings', listingsCtrl.create)
 ```
 
 Great, our controller file is set up. Time to add middleware!
