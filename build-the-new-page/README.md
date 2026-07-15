@@ -12,8 +12,6 @@ The action for creating a new listing breaks down into two parts:
 - Rendering a form for the user to enter the listing details.
 - Using the form data to create the listing in the database.
 
-These two parts require separate routes. Let's start to think through the first action. We want to render a form for the user to enter their listing details. From this, we can determine that we need a `GET` route, but we have already mapped a `GET` route to `/listings` to view all listings. Let's add `/new` to the end of the path to create a new unique route for this action.
-
 | Action | What It Does                            | HTTP Verb | Route           |
 | ------ | --------------------------------------- | --------- | --------------- |
 | Index  | Displays all listings                   | `GET`     | `/listings`     |
@@ -21,30 +19,17 @@ These two parts require separate routes. Let's start to think through the first 
 
 > 💡 We carried over the index route from the previous section to build onto this routes table.
 
-Now we know what our route should be, let's include an anchor element in our `listings/index.ejs` file to link to this new route:
-
-```html
-<!-- listings/index.ejs -->
-
-<!--Meta Data located above-->
-<h1>Here's all the Listings</h1>
-<!--Add in new anchor element-->
-<a href="/listings/new">Add a New Listing</a>
-<!--Closing body and html element under-->
-```
 
 ## 🎓 You Do: Render a new `listing` form
 
-We have determined that we need a route for `GET` requests to `/listings/new`. Let's build it! Inside of `controllers/listings.js` do the following steps:
-
-1. Create a route for `GET` requests to `/listings/new`.
-2. Using `res.render()`, render a new view called `listings/new.ejs`.
-3. Inside of `views/listings`, create a new file called `new.ejs`.
-4. Include the navbar partial in `new.ejs`.
-5. Add an `<h1>` element that says "Add a New Listing!".
+1. Create a folder inside of `views` called `listings` - this is where we'll organize our listings `ejs` pages.
+2. Inside of `views/listings`, create a new file called `new.ejs`.
+3. Include the navbar partial in `new.ejs`.list
+4. Add an `<h1>` element that says "Add a New Listing!".
+5. In our `showNewForm` function, using `res.render()`, render a new view called `listings/new.ejs`.
 6. Add a form that has a submit button. Leave the form blank for now.
 
-Test using the anchor element in `listings/index.ejs` to navigate to `localhost:3000/listings/new` in the browser.
+Test by navigating to `localhost:3000/listings/new` in the browser.
 
 > 🚨 Make sure to give your submit button text to see it in the browser.
 

@@ -38,3 +38,16 @@ We have confirmed that our route is working; now it's time to render the listing
 ```
 
 Now that we have an index page for our listings, let's render this page in our route. Inside of `controllers/listings.js`, update the route to render the new listings index page.
+
+
+Now that we have our listings page, let's include an anchor element in our `listings/index.ejs` file to link to the form for creating a new listing:
+
+```html
+<!-- listings/index.ejs -->
+
+<!--Meta Data located above-->
+<h1>Here's all the Listings</h1>
+<!--Add in new anchor element-->
+<a href="/listings/new">Add a New Listing</a>
+<!--Closing body and html element under-->
+```
