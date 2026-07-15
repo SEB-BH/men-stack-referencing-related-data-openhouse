@@ -127,17 +127,6 @@ const deleteListing =  async (req, res) => {
 
 ### Deleting the listing
 
-Let's take a moment to explore the [`deleteOne()`](https://mongoosejs.com/docs/5.x/docs/api/model.html#model_Model.deleteOne) method.
-
-When called on a document instance, `deleteOne()` removes that document from the database:
-
-```javascript
-const docInstance = await Model.findById(req.params.modelId)
-docInstance.deleteOne()
-```
-
-> 🧠 The `deleteOne()` method can also be called on the model. In this context, it requires an object specifying the criteria to identify the document for deletion. The first document that matches these conditions is removed from the database. We're not using this approach because we need to verify user permission before deletion.
-
 Update the function as shown below:
 
 ```javascript
@@ -146,7 +135,7 @@ Update the function as shown below:
 const deleteListing =  async (req, res) => {
     const listing = await Listing.findById(req.params.listingId)
     if (listing.owner.equals(req.session.user._id)) {
-      await listing.deleteOne()
+      await Listing.findByIdAndDelete(req.params.listingId)
       res.redirect('/listings')
     } else {
       res.send("You don't have permission to do that.")
