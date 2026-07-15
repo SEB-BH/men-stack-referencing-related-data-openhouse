@@ -57,16 +57,19 @@ Add the following to `controllers/listings.js`:
 ```js
 // controllers/listings.js
 
-router.post('/:listingId/favorited-by/:userId', async (req, res) => {
-  try {
-    console.log('userId: ', req.params.userId);
-    console.log('listingId: ', req.params.listingId);
-    res.send(`Request to favorite ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const favorite = async (req, res) => {
+    console.log('userId: ', req.params.userId)
+    console.log('listingId: ', req.params.listingId)
+    res.send(`Request to favorite ${req.params.listingId}`)
+}
+```
+
+## Adding the route
+
+```js
+// server.js
+
+app.post('/listings/:listingId/favorited-by/:userId', listingsCtrl.favorite)
 ```
 
 In your browser, click on the 'Favorite it!' button and check your terminal for the logged data.
@@ -99,17 +102,12 @@ Update the function as shown below:
 ```js
 // controllers/listings.js
 
-router.post('/:listingId/favorited-by/:userId', async (req, res) => {
-  try {
+const favorite = async (req, res) => {
     await Listing.findByIdAndUpdate(req.params.listingId, {
       $push: { favoritedByUsers: req.params.userId },
-    });
-    res.redirect(`/listings/${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    })
+    res.redirect(`/listings/${req.params.listingId}`)
+}
 ```
 
 At this point, you should be able to favorite a listing!
@@ -127,25 +125,20 @@ Update the 'show' controller as demonstrated below:
 ```js
 // controllers/listings.js
 
-router.get('/:listingId', async (req, res) => {
-  try {
+const show = async (req, res) => {
     const populatedListings = await Listing.findById(
       req.params.listingId
-    ).populate('owner');
+    ).populate('owner')
 
     const userHasFavorited = populatedListings.favoritedByUsers.some((user) =>
       user.equals(req.session.user._id)
-    );
+    )
 
     res.render('listings/show.ejs', {
       listing: populatedListings,
       userHasFavorited: userHasFavorited,
-    });
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    })
+}
 ```
 
 > 💡 The [`some()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some) array method returns `true` if at least one element passes the test in the provided callback. In this example, if at least one `ObjectId` in the array matches that of the current user, the value of `userHasFavorited` will be `true`. If there is no matching `ObjectId`, `userHasFavorited` will have a value of `false`.

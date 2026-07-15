@@ -56,16 +56,20 @@ Add the following to `controllers/listings.js`:
 ```js
 // controllers/listings.js
 
-router.delete('/:listingId/favorited-by/:userId', async (req, res) => {
-  try {
-    console.log('userId: ', req.params.userId);
-    console.log('listingId: ', req.params.listingId);
-    res.send(`Request to unfavorite ${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+const unfavorite =  async (req, res) => {
+    console.log('userId: ', req.params.userId)
+    console.log('listingId: ', req.params.listingId)
+    res.send(`Request to unfavorite ${req.params.listingId}`)
+}
+```
+
+
+## Adding the route
+
+```js
+// server.js
+
+app.delete('/listings/:listingId/favorited-by/:userId', listingsCtrl.unfavorite)
 ```
 
 In your browser, click on the 'Unfavorite it' button and check your terminal for the logged data.
@@ -89,17 +93,12 @@ Update the function as shown below:
 ```js
 // controllers/listings.js
 
-router.delete('/:listingId/favorited-by/:userId', async (req, res) => {
-  try {
+const unfavorite =  async (req, res) => {
     await Listing.findByIdAndUpdate(req.params.listingId, {
       $pull: { favoritedByUsers: req.params.userId },
-    });
-    res.redirect(`/listings/${req.params.listingId}`);
-  } catch (error) {
-    console.log(error);
-    res.redirect('/');
-  }
-});
+    })
+    res.redirect(`/listings/${req.params.listingId}`)
+}
 ```
 
 In your browser, try unfavoriting a listing and verify that the UI changes as expected.
